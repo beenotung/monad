@@ -27,11 +27,11 @@ export class Just<A> extends Maybe<A> {
         return f(this.value);
     }
 
+    /* and */
     then<B>(mb: Monad<Maybe<A>, B>): Monad<Maybe<A>, B> ;
     then<A>(mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> ;
-    then(_mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> {
-        // return (mb instanceof Just) ? mb : this;
-        return this;
+    then(mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> {
+        return (mb instanceof Just) ? mb : this;
     }
 
     peek(f: (a: A) => void): this {
@@ -45,8 +45,9 @@ export class Nothing<A> extends Maybe<A> {
         return this as any;
     }
 
-    then<B>(mb: Monad<Maybe<A>, B>): Monad<Maybe<A>, B> {
-        return mb;
+    /* and */
+    then<B>(_mb: Monad<Maybe<A>, B>): Monad<Maybe<A>, B> {
+        return this as any;
     }
 
     peek(_f: (a: A) => void): this {
