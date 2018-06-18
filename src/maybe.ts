@@ -5,7 +5,7 @@ export class MaybeConstructorImpl extends MonadConstructor<Maybe<any>> {
         return new Just(a);
     }
 
-    fail<A>(reason: string): Monad<Maybe<any>, A> {
+    fail<A>(): Monad<Maybe<any>, A> {
         return new Nothing();
     }
 }
@@ -29,7 +29,7 @@ export class Just<A> extends Maybe<A> {
 
     then<B>(mb: Monad<Maybe<A>, B>): Monad<Maybe<A>, B> ;
     then<A>(mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> ;
-    then(mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> {
+    then(_mb: Monad<Maybe<A>, A>): Monad<Maybe<A>, A> {
         // return (mb instanceof Just) ? mb : this;
         return this;
     }
@@ -41,7 +41,7 @@ export class Just<A> extends Maybe<A> {
 }
 
 export class Nothing<A> extends Maybe<A> {
-    bind<B>(f: (a: A) => Monad<Maybe<A>, B>): Monad<Maybe<A>, B> {
+    bind<B>(_f: (a: A) => Monad<Maybe<A>, B>): Monad<Maybe<A>, B> {
         return this as any;
     }
 
@@ -49,7 +49,7 @@ export class Nothing<A> extends Maybe<A> {
         return mb;
     }
 
-    peek(f: (a: A) => void): this {
+    peek(_f: (a: A) => void): this {
         return this;
     }
 }
