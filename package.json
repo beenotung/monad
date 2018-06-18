@@ -1,6 +1,6 @@
 {
-  "name": "monad",
-  "version": "1.0.0",
+  "name": "@beenotung/monad",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
