@@ -1,0 +1,5 @@
+= monad.ts
+
+a complete rewrite with duplication to https://github.com/beenotung/tslib[tslib]
+
+without libraries
